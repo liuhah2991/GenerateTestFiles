@@ -1,0 +1,29 @@
+该工具主要用于生成指定大小的测试文件
+用法示例：
+|--生成指定大小的任意文件(该模式下生成的文件内容填充空无法正常打开，仅适合大小规格测试)
+|----在./output/目录下生成20B的a.b文件
+|    python createfile.py any -tfn a.b -s 20
+|----在D:\Test\目录下生成2MB的a.b文件
+|    python createfile.py any -tf D:\Test\ -tfn a.b -s 2 -st MB
+|
+|--将指定文件填充到指定大小（该模式只会修改文件大小，不会修改文件内容）
+|----将D:\Test\1.jpg填充到5MB大小
+|    python createfile.py fill -sf D:\Test\1.jpg -s 5 -st MB
+|----在D:\Test\2.txt填充500KB大小并输出到D:\Test\2_1.txt
+|    python createfile.py fill -sf D:\Test\2.txt -tf D:\Test\ -tfn 2_1.txt -s 500 -st KB
+|
+|--生成指定大小的纯文本文件
+|----在./output/目录下生成随机字符填充50B大小的纯文本文件1.txt
+|    python createfile.py text -tfn 1.txt -s 50
+|----在D:\Test\目录下生成填充了'文本内容'的4KB大小的纯文本文件2.txt
+|----注意：数字和英文可以直接输入，中文的话需要加引号，否则会乱码
+|    python createfile.py text -tf D:\Test\ -tfn 2.txt -s 5 -st KB -t '文本内容'
+|
+|--生成指定大小的图片文件
+|----在./output/目录下生成默认200*200大小的图片文件1.jpg
+|    python createfile.py img -tfn 1.jpg
+|----在D:\Test\目录下生成1920*1080大小的红底图片文件2.png
+|    python createfile.py img -tf D:\Test\ -tfn 2.png -iw 1920 -ih 1080 -ic 255 0 0
+|----在D:\Test\目录下生成1920*1080大小的黑底图片文件3.webp，并将该文件填充到5MB
+|    python createfile.py img -tf D:\Test\ -tfn 3.webp -iw 1920 -ih 1080 -ic 0 0 0 -s 5 -st MB
+|
